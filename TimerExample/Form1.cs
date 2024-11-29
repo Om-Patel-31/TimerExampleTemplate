@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -14,6 +15,7 @@ namespace TimerExample
     public partial class Form1 : Form
     {
         int counter = 0;
+        Stopwatch myWatch = new Stopwatch();
 
         public Form1()
         {
@@ -26,11 +28,18 @@ namespace TimerExample
             {
                 countingTimer.Enabled = true;
                 startButton.Text = "Stop";
+
+                myWatch.Start();
             }
             else
             {
                 countingTimer.Enabled = false;
                 startButton.Text = "Start";
+
+                myWatch.Stop();
+                //timeOutput.Text = myWatch.Elapsed + "";
+                //timeOutput.Text = myWatch.ElapsedMilliseconds + "";
+                timeOutput.Text = myWatch.Elapsed.ToString(@"ss\:ff");
             }
         }
 
